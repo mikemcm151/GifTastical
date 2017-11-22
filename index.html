@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Band Search</h1>
+      <h1>Band Gif Search</h1>
       <!-- Bands will get dumped here -->
       <div id="bands-view"></div>
       <form id="bands-form">
@@ -43,6 +43,18 @@
       }).done(function(response) {
       console.log(response);
       console.log(queryURL);
+      var bandDiv = $("<div class='band'>");
+      var rating = response.rating;
+      var pOne = $("<p>").text("Rating: " + rating);
+      bandDiv.append(pOne);
+                // Retrieving the URL for the image
+          var imgURL = response.url;
+
+          // Creating an element to hold the image
+          var image = $("<img>").attr("src", imgURL);
+
+          // Appending the image
+          bandDiv.append(image);
       $("bands-view").text(JSON.stringify(response));
       renderButtons();
       });
