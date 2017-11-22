@@ -25,17 +25,27 @@
       </form>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script type="text/javascript">
+
+       // Initial array of bands
+      var bands = ["Metallica", "Iron Maiden", "Led Zeppelin", "U2", "Guns n' Roses"];
+
+      function displayBandGif(){
+
+      }
       // Got an API key from Giphy.com
-      var APIKey = "MnW1ksfBvfT7QV8gV9DwbG2d2YlhPk9y"
+      // var APIKey = "MnW1ksfBvfT7QV8gV9DwbG2d2YlhPk9y"
+      var band = $(this).attr("data-name");
       var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + bands + "&api_key=dc6zaTOxFJmzC&limit=10";
+      console.log(queryURL);
       $.ajax({
       url: queryURL,
       method: 'GET'
       }).done(function(response) {
-      console.log(response);
+      // console.log(response);
+      $("bands-view").text(JSON.stringify(response));
+      renderButtons();
       });
-      // Initial array of bands
-      var bands = ["Metallica", "Iron Maiden", "Led Zeppelin", "U2", "Guns n' Roses"];
+
       // Function for displaying bands data
       function renderButtons() {
       // Placed inside of <div id="bands-view"></div>   
@@ -79,6 +89,7 @@
       // calling renderButtons which handles the processing of our bands array
       renderButtons();
       });
+      $(document).on("click", ".bands", displayBandGif);
       // Calling the renderButtons function at least once to display the initial list of bands
       renderButtons();
       </script>
