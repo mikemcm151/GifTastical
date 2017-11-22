@@ -35,7 +35,7 @@
       // Got an API key from Giphy.com
       // var APIKey = "MnW1ksfBvfT7QV8gV9DwbG2d2YlhPk9y"
       var band = $(this).attr("data-name");
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + bands + "&api_key=dc6zaTOxFJmzC&limit=10";
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + bands + "&apiKey=dc6zaTOxFJmzC&limit=10";
       console.log(queryURL);
       $.ajax({
       url: queryURL,
