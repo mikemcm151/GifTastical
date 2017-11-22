@@ -43,18 +43,18 @@
       }).done(function(response) {
       console.log(response);
       console.log(queryURL);
-      var bandDiv = $("<div class='band'>");
-      var rating = response.rating;
-      var pOne = $("<p>").text("Rating: " + rating);
-      bandDiv.append(pOne);
-                // Retrieving the URL for the image
-          var imgURL = response.url;
+      // var bandDiv = $("<div class='band'>");
+      // var rating = response.rating;
+      // var pOne = $("<p>").text("Rating: " + rating);
+      // bandDiv.append(pOne);
+      //           // Retrieving the URL for the image
+      //     var imgURL = response.url;
 
-          // Creating an element to hold the image
-          var image = $("<img>").attr("src", imgURL);
+      //     // Creating an element to hold the image
+      //     var image = $("<img>").attr("src", imgURL);
 
-          // Appending the image
-          bandDiv.append(image);
+      //     // Appending the image
+      //     bandDiv.append(image);
       $("bands-view").text(JSON.stringify(response));
       renderButtons();
       });
