@@ -23,6 +23,8 @@
         <!-- Button triggers new bands to be added -->
         <input id="add-bands" type="submit" value="Enter Your Favorite ROCK Band If You Dare!!!">
       </form>
+        <div id="gifs-appear-here">
+        </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script type="text/javascript">
 
@@ -106,6 +108,12 @@
       // Calling the renderButtons function at least once to display the initial list of bands
       renderButtons();
 
+      // BUTTON TRIGGER AJAX cALL RESPONSE
+
+          // Event listener for all button elements
+    // $("button").on("click", function() {
+    //   // In this case, the "this" keyword refers to the button that was clicked
+    //   var band = $(this).attr("data-name");
 
       // PAUSING GIFS
           $(".gif").on("click", function() {
@@ -120,6 +128,7 @@
       } else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
+        
       }
     });
       </script>
