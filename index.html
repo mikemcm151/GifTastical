@@ -41,7 +41,8 @@
       url: queryURL,
       method: 'GET'
       }).done(function(response) {
-      // console.log(response);
+      console.log(response);
+      console.log(queryURL);
       $("bands-view").text(JSON.stringify(response));
       renderButtons();
       });
