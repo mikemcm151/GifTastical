@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GifTastical</title>
+    <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+    margin: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Band Search</h1>
+      <!-- Bands will get dumped here -->
+      <div id="bands-view"></div>
+      <form id="bands-form">
+        <label for="bands-form-input">Enter Your Favorite ROCK Band If You Dare!!!</label>
+        <input type="text" id="bands-input"><br>
+        <!-- Button triggers new bands to be added -->
+        <input id="add-bands" type="submit" value="Enter Your Favorite ROCK Band If You Dare!!!">
+      </form>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript">
+      // Got an API key from Giphy.com
+      var APIKey = "MnW1ksfBvfT7QV8gV9DwbG2d2YlhPk9y"
+      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + bands + "&api_key=dc6zaTOxFJmzC&limit=10";
+      $.ajax({
+      url: queryURL,
+      method: 'GET'
+      }).done(function(response) {
+      console.log(response);
+      });
+      // Initial array of bands
+      var bands = ["Metallica", "Iron Maiden", "Led Zeppelin", "U2", "Guns n' Roses"];
+      // Function for displaying bands data
+      function renderButtons() {
+      // Deleting the band buttons prior to adding new band buttons
+      // (this is necessary otherwise we will have repeat buttons)
+      $("#bands-view").empty();
+      // Looping through the array of bands
+      for (var i = 0; i < bands.length; i++) {
+      // Then dynamicaly generating buttons for each bands in the array.
+      // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
+      var a = $("<button>");
+      // Adding a class
+      a.addClass("bands");
+      // Adding a data-attribute with a value of the band at index i
+      a.attr("data-name", bands[i]);
+      // Providing the button's text with a value of the band at index i
+      a.text(bands[i]);
+      // Adding the button to the HTML
+      $("#bands-view").append(a);
+      }
+      }
+      // This function handles events where one button is clicked
+      $("#add-bands").on("click", function(event) {
+      // event.preventDefault() prevents the form from trying to submit itself.
+      // We're using a form so that the user can hit enter instead of clicking the button if they want
+      event.preventDefault();
+      // This line will grab the text from the input box
+      var band = $("#bands-input").val().trim();
+      // The bands from the textbox is then added to our array
+      bands.push(band);
+      // calling renderButtons which handles the processing of our bands array
+      renderButtons();
+      });
+      // Calling the renderButtons function at least once to display the initial list of bands
+      renderButtons();
+      </script>
+    </div>
+  </body>
+</html>
